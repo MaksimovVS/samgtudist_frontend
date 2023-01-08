@@ -1,11 +1,15 @@
 import React from 'react';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import MyRoutes from './routers';
+
+const theme = createTheme();
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <MyRoutes />
-    </div>
+    </ThemeProvider>
   );
 }
 

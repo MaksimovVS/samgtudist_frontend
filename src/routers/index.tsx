@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Container } from '@mui/material';
 import { Page } from './types';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
@@ -12,17 +13,19 @@ const pages: Page[] = [
 
 const MyRoutes = () => (
   <BrowserRouter basename='/'>
-    <Header />
-
-    <Routes>
-      {pages.map(({ component, path }) => {
-        const Component = component;
-        return <Route key={path} element={<Component />} path={path} />;
-      })}
-      <Route path='*' element={<Page404 />} />
-    </Routes>
-
-    <Footer />
+    <Container maxWidth='lg'>
+      <Header />
+      <main>
+        <Routes>
+          {pages.map(({ component, path }) => {
+            const Component = component;
+            return <Route key={path} element={<Component />} path={path} />;
+          })}
+          <Route path='*' element={<Page404 />} />
+        </Routes>
+      </main>
+      <Footer />
+    </Container>
   </BrowserRouter>
 );
 
